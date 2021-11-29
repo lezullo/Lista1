@@ -6,3 +6,38 @@
 #deve ser formatada mostrando o dia, o mês e o ano separados por barra (/);
 #e. forneça uma operação para avançar uma data para o dia seguinte.
 
+class bombaCombustivel():  
+    def __init__(self, tipoCombustivel, valorLitro, quantidadeCombustivel):
+        self.tipoCombustivel = tipoCombustivel
+        self.valorLitro = valorLitro
+        self.quantidadeCombustivel=quantidadeCombustivel
+
+    def abastecerPorValor(self, valorPago):
+        quantlitros = valorPago/self.valorLitro
+        self.quantidadeCombustivel = self.quantidadeCombustivel + (quantlitros)
+        return quantlitros
+
+    def abastecerPorLitro(self, quantidadeLitros):
+        valorPago = quantidadeLitros*self.valorLitro
+        self.quantidadeCombustivel = self.quantidadeCombustivel + quantidadeLitros
+        return valorPago
+
+    def alterarValor(self, novoValor):
+        self.valorLitro = novoValor
+        return self.valorLitro
+
+    def alterarCombustivel(self, novoCombustivel):
+        self.tipoCombustivel = novoCombustivel
+        return self.tipoCombustivel
+
+    def alterarQuantidadeCombustivel(self, novaQuantidade):
+        self.quantidadeCombustivel = novaQuantidade
+        return self.quantidadeCombustivel
+
+Jose = bombaCombustivel('gasolina', 7.05, 15 )
+Jose.abastecerPorLitro(10)
+print(Jose.abastecerPorValor(10))
+print(Jose.quantidadeCombustivel)
+       
+
+  
