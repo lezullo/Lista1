@@ -6,38 +6,41 @@
 #deve ser formatada mostrando o dia, o mês e o ano separados por barra (/);
 #e. forneça uma operação para avançar uma data para o dia seguinte.
 
-class bombaCombustivel():  
-    def __init__(self, tipoCombustivel, valorLitro, quantidadeCombustivel):
-        self.tipoCombustivel = tipoCombustivel
-        self.valorLitro = valorLitro
-        self.quantidadeCombustivel=quantidadeCombustivel
+from datetime import datetime
+from datetime import timedelta
 
-    def abastecerPorValor(self, valorPago):
-        quantlitros = valorPago/self.valorLitro
-        self.quantidadeCombustivel = self.quantidadeCombustivel + (quantlitros)
-        return quantlitros
+class Data:
+    def __init__(self, dia=0, mes=0, ano=0):
+        if dia == 0:
+            dia = datetime.today().day
+        self.__dia = dia
+        if mes == 0:
+            mes = datetime.today().month
+        self.__mes = mes
+        if ano == 0:
+            ano = datetime.today().year
+        self.__ano = ano
 
-    def abastecerPorLitro(self, quantidadeLitros):
-        valorPago = quantidadeLitros*self.valorLitro
-        self.quantidadeCombustivel = self.quantidadeCombustivel + quantidadeLitros
-        return valorPago
+    def __str__(self):
+        return '{}/{}/{}'.format(self.__dia,self.__mes,self.__ano)
 
-    def alterarValor(self, novoValor):
-        self.valorLitro = novoValor
-        return self.valorLitro
+    def dia_seguinte(self):
+        date = datetime(self.__ano, self.__mes, self.__dia, 0, 0, 0) + timedelta(days=1)
+        self.__dia = date.day
+        self.__mes = date.month
+        self.__ano = date.year
 
-    def alterarCombustivel(self, novoCombustivel):
-        self.tipoCombustivel = novoCombustivel
-        return self.tipoCombustivel
+data = Data() #hoje
+print("Data atual = ", data)
+data.dia_seguinte()
+print("Dia seguinte = ", data)
 
-    def alterarQuantidadeCombustivel(self, novaQuantidade):
-        self.quantidadeCombustivel = novaQuantidade
-        return self.quantidadeCombustivel
+data = Data(30, 11, 2021)
+print("Data fim do mês = ", data)
+data.dia_seguinte()
+print("Dia seguinte = ", data)
 
-Jose = bombaCombustivel('gasolina', 7.05, 15 )
-Jose.abastecerPorLitro(10)
-print(Jose.abastecerPorValor(10))
-print(Jose.quantidadeCombustivel)
-       
-
-  
+data = Data(31, 12, 2021)
+print("Data no fim do ano = ",data)
+data.dia_seguinte()
+print("Dia seguinte = ", data)
