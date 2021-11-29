@@ -3,21 +3,22 @@
 #Duvida: Qual dessas duas opções seriam a mais adequada para o que foi pedido? Ou teria alguma outra melhor? Fiquei com essa dúvida.
 
 #Opção1
-class Aluno1:
-    def __init__(self, nome, nota1=0, nota2=0, nota3=0,nota4=0):
-        self.nome = nome
-        self.nota1 = nota1
-        self.nota2 = nota2
-        self.nota3 = nota3
-        self.nota4 = nota4
+info=[]
+op=1
+while op== 1:
+    nome	= (input('Digite	o Nome do aluno:'))
+    nota1	=	float(input('Nota 1:'))  
+    nota2	=	float(input('Nota 2:'))    
+    nota3	=	float(input('Nota 3:'))      
+    nota4	=	float(input('Nota 4:'))
+    media=(nota1 + nota2+ nota3+nota4)/4
+    txt = 'Nome: ' + nome
+    txt += ' Notas: %2.1f, %2.1f, %2.1f, %2.1f' % (nota1, nota2, nota3, nota4)
+    txt += ' Média: %2.1f' % media
+    info.append(txt)
+    op	= int(input('Deseja adicionar as notas de outro aluno? (Não=0):'))
 
-        txt = 'Nome: ' + self.nome
-        txt += '\nNotas: %2.1f, %2.1f, %2.1f, %2.1f' % (self.nota1, self.nota2, self.nota3, self.nota4)
-        txt += '\nMédia: %2.1f' % ((self.nota1+ self.nota2+ self.nota3+ self.nota4)/4)
-        return (print(txt))
-
-a1 = Aluno1('João Pedro',10,9,10,9)
-a2 = Aluno1('Ana',9,9,9,9)
+print(info)
 
 #Opção2
 class Aluno2:
